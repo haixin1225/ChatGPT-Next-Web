@@ -22,6 +22,8 @@ export const getBuildConfig = () => {
     commitId: COMMIT_ID,
     buildMode: process.env.BUILD_MODE ?? "standalone",
     isApp: !!process.env.BUILD_APP,
+    model: process.env.MODEL ?? "gpt-3.5-turbo",
+    noBorder: !!process.env.NO_BORDER
   };
 };
 
