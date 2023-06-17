@@ -17,12 +17,15 @@ export enum Theme {
   Light = "light",
 }
 
+const DEFAULT_MODEL = 'gpt-3.5-turbo'
+const MODEL = process.env.MODEL ?? DEFAULT_MODEL;
+
 export const DEFAULT_CONFIG = {
   submitKey: SubmitKey.CtrlEnter as SubmitKey,
   avatar: "1f603",
   fontSize: 14,
   theme: Theme.Auto as Theme,
-  tightBorder: !!getClientConfig()?.isApp,
+  tightBorder: process.env.NO_BORDER ?? (!!getClientConfig()?.isApp),
   sendPreviewBubble: true,
   sidebarWidth: 300,
 
@@ -31,7 +34,7 @@ export const DEFAULT_CONFIG = {
   dontShowMaskSplashScreen: false, // dont show splash screen when create chat
 
   modelConfig: {
-    model: "gpt-3.5-turbo" as ModelType,
+    model: MODEL as ModelType,
     temperature: 0.5,
     max_tokens: 2000,
     presence_penalty: 0,
